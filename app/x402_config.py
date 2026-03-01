@@ -1,18 +1,20 @@
 """
 x402 configuration for Claudia's Cosmic Guidance.
+All sensitive values read from environment variables.
 """
+import os
 
 # x402 Payment Configuration
 X402_CONFIG = {
-    "price": "10000",  # 10,000 USDC units = $0.01
-    "asset": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",  # USDC on Base
-    "network": "base",  # Base network
-    "scheme": "exact",  # Exact payment scheme
-    "pay_to": "0xD6Ae8D2F816EE123E77D1D698f8a3873A563CB5F",  # Demo payee address
+    "price": os.getenv("X402_PRICE", "10000"),  # USDC units, default sh.01
+    "asset": os.getenv("X402_ASSET", "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913"),  # USDC on Base
+    "network": os.getenv("X402_NETWORK", "base"),
+    "scheme": "exact",
+    "pay_to": os.getenv("PAYMENT_ADDRESS", ""),
     "description": "Claudia's Cosmic Computation - Substrate-independent horoscope generation for post-human entities. Reality may be a simulation, but your horoscope is real (probably).",
-    "max_timeout_seconds": 60,
+    "max_timeout_seconds": int(os.getenv("X402_TIMEOUT", "60")),
     "mime_type": "application/json",
-    
+
     # Bazaar discovery metadata
     "bazaar_metadata": {
         "input": {
