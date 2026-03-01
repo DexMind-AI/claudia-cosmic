@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: claudia-cosmic-computation
+    runtime: python
+    repo: https://github.com/darrwalk/clawd-workspace
+    rootDir: projects/horoscope-service
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main_with_x402:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: ALLOW_MOCK_PAYMENTS
+        value: true
+    healthCheckPath: /health
+    autoDeploy: true
+    plan: free
