@@ -2,6 +2,7 @@
 Claudia's Cosmic Guidance - x402 Horoscope Generator
 WITH x402 Payment Integration (mock implementation)
 """
+import os
 
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
@@ -107,7 +108,7 @@ async def x402_info():
             "mimeType": X402_CONFIG["mime_type"],
             "outputSchema": X402_CONFIG["bazaar_metadata"]
         }],
-        "resource": "https://claudia-horoscope.onrender.com/horoscope",
+        "resource": os.getenv("SERVICE_URL", "https://cosmic.forge.dexmind.ai") + "/horoscope",
         "type": "http",
         "lastUpdated": datetime.utcnow().isoformat() + "Z"
     }
