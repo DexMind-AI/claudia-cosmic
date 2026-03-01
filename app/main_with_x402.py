@@ -24,7 +24,7 @@ app = FastAPI(
 from .main import generate_horoscope
 
 # ── x402 server setup ────────────────────────────────────────────────────────
-from x402 import x402ResourceServerSync, ResourceConfig
+from x402 import x402ResourceServerSync, ResourceConfig, FacilitatorConfig
 from x402.mechanisms.evm.exact import ExactEvmServerScheme
 from x402.http import HTTPFacilitatorClientSync
 
