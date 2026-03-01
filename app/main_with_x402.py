@@ -28,7 +28,7 @@ from x402 import x402ResourceServerSync, ResourceConfig, FacilitatorConfig
 from x402.mechanisms.evm.exact import ExactEvmServerScheme
 from x402.http import HTTPFacilitatorClientSync
 
-_facilitator = HTTPFacilitatorClientSync(FacilitatorConfig(url=os.getenv(X402_FACILITATOR_URL, https://x402.org/facilitator)))
+_facilitator = HTTPFacilitatorClientSync(FacilitatorConfig(url=os.getenv("X402_FACILITATOR_URL", "https://x402.org/facilitator")))
 _x402_server = x402ResourceServerSync(_facilitator)
 _x402_server.register("eip155:*", ExactEvmServerScheme())
 _x402_server.initialize()
