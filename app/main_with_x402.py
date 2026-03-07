@@ -40,8 +40,7 @@ _resource_config = ResourceConfig(
     price=f"${int(os.getenv('X402_PRICE', '10000')) / 1_000_000:.4f}",
 )
 _payment_requirements = _x402_server.build_payment_requirements(
-    _resource_config,
-    resource=os.getenv("SERVICE_URL", "https://cosmic.forge.dexmind.ai") + "/horoscope"
+    _resource_config
 )
 
 def _payment_required_response():
